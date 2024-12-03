@@ -25,7 +25,7 @@ export default function Dashboard() {
     {
       id: 3,
       label: "Task Details",
-      href: "/tasks/:id",
+      href: "/tasksDetails/id",
       icon: <TbListDetails className=" text-2xl" />,
     },
   ];

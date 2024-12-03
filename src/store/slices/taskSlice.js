@@ -20,9 +20,9 @@ const taskSlice = createSlice({
             localStorage.setItem("category",JSON.stringify(state.filters));
         },
         deleteTask(state,action){
-            state.task = state.task.filter((todo)=>{
-                todo.id !== action.payload;
-            });
+            state.task = state.task.filter((todo)=>
+                todo.id !== action.payload
+            );
             localStorage.setItem("todo",JSON.stringify(state.task));
         },
         toggleTaskCompleted(state,action){

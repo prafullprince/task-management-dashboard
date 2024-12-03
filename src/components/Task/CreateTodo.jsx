@@ -63,12 +63,12 @@ function CreateTodo() {
   return (
     <div>
       {/* heading */}
-      <h2 className=" text-2xl">Today</h2>
+      <h2 className=" text-2xl">Your task</h2>
 
       {/* createTodo */}
       <form onSubmit={submitHandler} className=" mt-8">
         <div className="flex gap-2 items-center">
-          <div className="text-xl">Create Todo:</div>
+          <div className="text-xl text-richblack-50">Create Todo:</div>
           <div className="">
             <button
               onClick={(e) => {

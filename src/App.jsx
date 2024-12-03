@@ -15,7 +15,7 @@ function App() {
 
         <Route element={<Dashboard />} >
           <Route path='/tasks' element={<Task />} />
-          <Route path='/tasks/:id' element={<TaskPageDetails />} />
+          <Route path='/tasksDetails/:id' element={<TaskPageDetails />} />
         </Route>
       </Routes>
     </div>
