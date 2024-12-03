@@ -4,8 +4,6 @@ import { useSelector } from "react-redux";
 import FilteredTaskList from "./FilteredTaskList";
 import { FaSearch } from "react-icons/fa";
 import SearchModal from "../Common/SearchModal";
-import { FaRegSquare } from "react-icons/fa6";
-
 
 
 function CategoryTab() {
@@ -18,11 +16,11 @@ function CategoryTab() {
   // state
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [searchModal, setSearchModal] = useState(null);
-  
+
   // filteredTask
   const filteredTasks = task.filter((todo) => {
     const today = new Date();
-    const dueDate = new Date(task.date);
+    const dueDate = new Date(todo.date);
 
     if (filters === "Completed") {
       return todo.completed;
@@ -40,6 +38,7 @@ function CategoryTab() {
 
       {/* search,categoryTab */}
       <div className="flex gap-6 items-center">
+
         {/* categories tab */}
         <div className="flex border-0 rounded-lg bg-richblack-700 py-1 px-2 w-fit mt-4">
           {categories.map((category, idx) => (
@@ -51,29 +50,43 @@ function CategoryTab() {
             />
           ))}
         </div>
+
         {/* search */}
         <div className="mt-3">
-          <button onClick={()=>setSearchModal({
-            task
-          })} className="px-3 bg-yellow-50 text-richblack-900 rounded-lg py-1 text-lg flex items-center gap-2">
+          <button
+            onClick={() =>
+              setSearchModal({
+                task,
+              })
+            }
+            className="px-3 bg-yellow-50 text-richblack-900 rounded-lg py-1 text-lg flex items-center gap-2"
+          >
             <FaSearch />
             <p className="text-lg font-semibold">Search Task</p>
           </button>
         </div>
+
       </div>
 
-      {/* Inbox*/}
+      {/* Inbox */}
       <div className="mt-8">
+
         {/* heading */}
-        <div className="text-2xl bg-gradient-to-r from-pink-100 to-yellow-50 w-fit text-transparent bg-clip-text">Inbox</div>
+        <div className="text-2xl bg-gradient-to-r from-pink-100 to-yellow-50 w-fit text-transparent bg-clip-text">
+          Inbox
+        </div>
 
         {/* FilteredTasklist */}
         <FilteredTaskList filteredTasks={filteredTasks} />
+
       </div>
 
-      {
-        searchModal && <SearchModal searchModal={searchModal} setSearchModal={setSearchModal} />
-      }
+      {searchModal && (
+        <SearchModal
+          searchModal={searchModal}
+          setSearchModal={setSearchModal}
+        />
+      )}
     </div>
   );
 }

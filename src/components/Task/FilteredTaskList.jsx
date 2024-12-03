@@ -25,7 +25,7 @@ function FilteredTaskList({ filteredTasks }) {
   }
 
   // deleteHandler
-  function deleteHandler(id) {
+  function deleteHandler(e, id) {
     setModalData({
       text1: "Are you sure ?",
       text2: "Your task will be deleted.",
@@ -37,6 +37,7 @@ function FilteredTaskList({ filteredTasks }) {
       },
       btn1Handler: () => setModalData(null),
     });
+    e.stopPropagation();
   }
 
   // viewHandler
@@ -50,7 +51,7 @@ function FilteredTaskList({ filteredTasks }) {
         <div className="mt-6">No task found</div>
       ) : (
         <div className="mt-6 flex flex-col gap-3">
-          {filteredTasks?.map((filteredTodo, idx) => (
+          {filteredTasks?.map((filteredTodo) => (
             <div
               onClick={() => viewHandler(filteredTodo.id)}
               key={filteredTodo.id}
@@ -75,15 +76,24 @@ function FilteredTaskList({ filteredTasks }) {
                   </div>
                   {/* content */}
                   <div className="flex flex-col gap-1">
-                    <p className="text-richblack-5 text-lg break-all text-wrap">
-                      {filteredTodo?.title}
-                    </p>
+                    {filteredTodo?.title.length > 100 ? (
+                      <p className="text-richblack-5 text-lg break-all text-wrap">
+                        {filteredTodo?.title.substring(0, 100)}
+                        <span className="text-blue-50">.......</span>
+                      </p>
+                    ) : (
+                      <p className="text-richblack-5 text-lg break-all text-wrap">
+                        {filteredTodo?.title}
+                      </p>
+                    )}
                     <p className="text-richblack-50 text-sm break-all text-wrap">
                       {filteredTodo?.description}
                     </p>
                     <div className="flex gap-2 items-center text-sm break-all text-wrap">
                       <BsCalendar className="text-yellow-50" />
-                      <p className="text-yellow-50">{formatedDueDate(filteredTodo.date)}</p>
+                      <p className="text-yellow-50">
+                        {formatedDueDate(filteredTodo.date)}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -101,7 +111,7 @@ function FilteredTaskList({ filteredTasks }) {
                   <button>
                     <CiEdit className="text-3xl hover:text-yellow-200 transition-all duration-200" />
                   </button>
-                  <button onClick={() => deleteHandler(filteredTodo.id)}>
+                  <button onClick={(e) => deleteHandler(e, filteredTodo.id)}>
                     <MdDelete className="text-3xl hover:text-pink-200 transition-all duration-200" />
                   </button>
                 </div>
@@ -112,6 +122,8 @@ function FilteredTaskList({ filteredTasks }) {
           ))}
         </div>
       )}
+
+      {/* modal */}
       {modalData && (
         <ConfirmationModal modalData={modalData} setModalData={setModalData} />
       )}
