@@ -4,11 +4,13 @@ import { BsCalendarDate } from "react-icons/bs";
 import { formatedDueDate } from "../../helper/formatedDate";
 
 function ViewModal({ viewModalData, setViewModalData }) {
+  
   // hook
   const { task } = useSelector((state) => state.tasks);
-
+  console.log(viewModalData)
   // currentTask
   const viewTask = task.filter((todo) => todo.id === viewModalData.id);
+  console.log(viewTask)
   const today = new Date();
   const dueDate = new Date(viewTask[0].date);
 
