@@ -31,11 +31,23 @@ const taskSlice = createSlice({
                 task.completed = !task.completed
             }
             localStorage.setItem("todo",JSON.stringify(state.task));
+        },
+        editTask(state,action){
+            // fetch data from payload
+            const {id,title,description,date,completed} = action.payload;
+
+            const task = state.task.find((todo)=>todo.id === id);
+            if(task){
+                task.title = title;
+                task.description = description;
+                task.date = date;
+                task.completed = completed;
+            }
         }
     }
 });
 
 // export reducers function
-export const {addTask,setFilters,toggleTaskCompleted,deleteTask} = taskSlice.actions;
+export const {addTask,setFilters,toggleTaskCompleted,deleteTask,editTask} = taskSlice.actions;
 // export taskReducer reducer
 export default taskSlice.reducer;

@@ -24,8 +24,8 @@ export default function Dashboard() {
     },
     {
       id: 3,
-      label: "Task Details",
-      href: "/tasksDetails/id",
+      label: "My Day",
+      href: "/todayTasks",
       icon: <TbListDetails className=" text-2xl" />,
     },
   ];

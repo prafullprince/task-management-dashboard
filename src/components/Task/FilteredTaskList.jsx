@@ -9,6 +9,7 @@ import ConfirmationModal from "../Common/ConfirmationModal";
 import ViewModal from "../Common/ViewModal";
 import { BsCalendar } from "react-icons/bs";
 import { formatedDueDate } from "../../helper/formatedDate";
+import EditModal from "../Common/EditModal";
 
 function FilteredTaskList({ filteredTasks }) {
   // hook
@@ -17,6 +18,7 @@ function FilteredTaskList({ filteredTasks }) {
   // state
   const [modalData, setModalData] = useState(null);
   const [viewModalData, setViewModalData] = useState(null);
+  const [editModalData,setEditModalData] = useState(null);
 
   // completed task handler
   function completeHandler(e, id) {
@@ -43,6 +45,12 @@ function FilteredTaskList({ filteredTasks }) {
   // viewHandler
   function viewHandler(id) {
     setViewModalData({ id });
+  }
+
+  // editHandler
+  function editHandler(e,id){
+    setEditModalData({id});
+    e.stopPropagation();
   }
 
   return (
@@ -108,7 +116,7 @@ function FilteredTaskList({ filteredTasks }) {
                       }`}
                     />
                   </button>
-                  <button>
+                  <button onClick={(e)=> editHandler(e, filteredTodo.id)}>
                     <CiEdit className="text-3xl hover:text-yellow-200 transition-all duration-200" />
                   </button>
                   <button onClick={(e) => deleteHandler(e, filteredTodo.id)}>
@@ -133,6 +141,9 @@ function FilteredTaskList({ filteredTasks }) {
           setViewModalData={setViewModalData}
         />
       )}
+      {
+        editModalData && <EditModal editModalData={editModalData} setEditModalData={setEditModalData} />
+      }
     </div>
   );
 }
