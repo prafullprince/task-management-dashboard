@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editTask } from "../../store/slices/taskSlice";
 import toast from "react-hot-toast";
+import { FaCalendarAlt } from "react-icons/fa";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 
 function EditModal({ editModalData, setEditModalData }) {
 
@@ -16,13 +20,20 @@ function EditModal({ editModalData, setEditModalData }) {
     description: `${currentTask[0].title}`,
     date: `${currentTask[0].title}`,
   });
-  const [selected, setSelected] = useState(false);
 
   // changeHandler
   function changeHandler(e) {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
+    }));
+  }
+
+  // Change handler for DatePicker
+  function dateChangeHandler(date) {
+    setFormData((prev) => ({
+      ...prev,
+      date: date ? date.toISOString().split('T')[0] : '', // Store date as YYYY-MM-DD
     }));
   }
 
@@ -93,15 +104,17 @@ function EditModal({ editModalData, setEditModalData }) {
                 name="description"
                 value={formData.description}
               />
-              <input
-                className="bg-richblack-800 w-full outline-none px-4 py-3"
-                required
-                type="date"
-                placeholder="pick a date"
-                onChange={changeHandler}
-                name="date"
-                value={formData.date}
+              {/* datePicker */}
+            <div className="w-full flex items-center px-4 py-3 gap-2 cursor-pointer">
+              <FaCalendarAlt />
+              <DatePicker
+                className="bg-richblack-800 w-full outline-none text-richblack-5 cursor-pointer"
+                selected={formData.date && !isNaN(new Date(formData.date).getTime())  ? new Date(formData.date) : null}
+                onChange={dateChangeHandler}
+                dateFormat="yyyy-MM-dd"
+                placeholderText="Select due date"
               />
+            </div>
               <div className=" w-full flex justify-end bg-richblack-800 mr-2 pb-2 pr-2 mt-2">
                 <button
                   type="submit"

@@ -22,8 +22,10 @@ function ViewModal({ viewModalData, setViewModalData }) {
   return (
     <div className="fixed inset-0 bg-white bg-opacity-10 z-50 backdrop-blur-sm grid place-items-center overflow-auto">
       <div className="w-11/12 mx-auto max-w-[350px] md:max-w-[800px] bg-richblack-800 border-richblack-400 border rounded-lg p-6">
+      
         {/* heading */}
         <div className="flex justify-between">
+
           {/* text */}
           <p className=" text-lg font-semibold">Task details (View)</p>
 

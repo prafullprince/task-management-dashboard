@@ -12,13 +12,14 @@ import { formatedDueDate } from "../../helper/formatedDate";
 import EditModal from "../Common/EditModal";
 
 function FilteredTaskList({ filteredTasks }) {
+  
   // hook
   const dispatch = useDispatch();
 
   // state
   const [modalData, setModalData] = useState(null);
   const [viewModalData, setViewModalData] = useState(null);
-  const [editModalData,setEditModalData] = useState(null);
+  const [editModalData, setEditModalData] = useState(null);
 
   // completed task handler
   function completeHandler(e, id) {
@@ -48,8 +49,8 @@ function FilteredTaskList({ filteredTasks }) {
   }
 
   // editHandler
-  function editHandler(e,id){
-    setEditModalData({id});
+  function editHandler(e, id) {
+    setEditModalData({ id });
     e.stopPropagation();
   }
 
@@ -116,7 +117,7 @@ function FilteredTaskList({ filteredTasks }) {
                       }`}
                     />
                   </button>
-                  <button onClick={(e)=> editHandler(e, filteredTodo.id)}>
+                  <button onClick={(e) => editHandler(e, filteredTodo.id)}>
                     <CiEdit className="text-3xl hover:text-yellow-200 transition-all duration-200" />
                   </button>
                   <button onClick={(e) => deleteHandler(e, filteredTodo.id)}>
@@ -124,8 +125,6 @@ function FilteredTaskList({ filteredTasks }) {
                   </button>
                 </div>
               </div>
-              {/* underline
-              <div className="w-full h-1 border-b-[0.2px] border-richblack-600"></div> */}
             </div>
           ))}
         </div>
@@ -141,9 +140,12 @@ function FilteredTaskList({ filteredTasks }) {
           setViewModalData={setViewModalData}
         />
       )}
-      {
-        editModalData && <EditModal editModalData={editModalData} setEditModalData={setEditModalData} />
-      }
+      {editModalData && (
+        <EditModal
+          editModalData={editModalData}
+          setEditModalData={setEditModalData}
+        />
+      )}
     </div>
   );
 }
