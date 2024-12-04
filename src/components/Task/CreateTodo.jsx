@@ -67,7 +67,7 @@ function CreateTodo() {
 
       {/* createTodo */}
       <form onSubmit={submitHandler} className="mt-8">
-        <div className="flex flex-col gap-2 justify-center sm:flex-row sm:items-center">
+        <div className="flex flex-col gap-2 sm:flex-row sm:gap-2">
           <div className="text-xl text-richblack-50">Create Todo:</div>
           <div className="">
             <button

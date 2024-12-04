@@ -4,13 +4,12 @@ import { BsCalendarDate } from "react-icons/bs";
 import { formatedDueDate } from "../../helper/formatedDate";
 
 function ViewModal({ viewModalData, setViewModalData }) {
-  
   // hook
   const { task } = useSelector((state) => state.tasks);
-  console.log(viewModalData)
+  console.log(viewModalData);
   // currentTask
   const viewTask = task.filter((todo) => todo.id === viewModalData.id);
-  console.log(viewTask)
+  console.log(viewTask);
   const today = new Date();
   const dueDate = new Date(viewTask[0].date);
 
@@ -28,8 +27,8 @@ function ViewModal({ viewModalData, setViewModalData }) {
           {/* text */}
           <p className=" text-lg font-semibold">Task details (View)</p>
 
-          {/* status */}
-          <div>
+          {/* status -> min-width 640px */}
+          <div className="hidden sm:block">
             {viewTask[0].completed ? (
               <div className="flex text-lg gap-1 items-center bg-gradient-to-r from-yellow-50 to-caribbeangreen-50 text-transparent bg-clip-text">
                 Completed
@@ -93,6 +92,24 @@ function ViewModal({ viewModalData, setViewModalData }) {
             </p>
           </div>
         </div>
+
+        {/* status */}
+        <div className="sm:hidden mt-4">
+          {viewTask[0].completed ? (
+            <div className="flex text-lg gap-1 items-center bg-gradient-to-r from-yellow-50 to-caribbeangreen-50 text-transparent bg-clip-text">
+              Completed
+            </div>
+          ) : dueDate < today ? (
+            <div className="flex text-lg gap-1 items-center bg-gradient-to-r from-pink-200 to-pink-100 text-transparent bg-clip-text">
+              Overdue
+            </div>
+          ) : (
+            <div className="flex gap-1 items-center bg-gradient-to-r from-pink-300 to-blue-200 text-lg text-transparent bg-clip-text">
+              Pending
+            </div>
+          )}
+        </div>
+
       </div>
     </div>
   );

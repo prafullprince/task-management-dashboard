@@ -54,7 +54,7 @@ function SearchModal({ searchModal, setSearchModal }) {
                 <button
                   onClick={()=>searchResultClick(data.id)}
                   key={data.id}
-                  className="px-4 py-1 cursor-pointer hover:bg-richblack-700 hover:text-richblack-5 text-richblack-900 text-lg rounded-lg mx-4 transition-all duration-200 break-all text-wrap flex items-center gap-3"
+                  className="px-4 py-1 flex flex-col cursor-pointer hover:bg-richblack-700 hover:text-richblack-5 text-richblack-900 text-lg rounded-lg mx-4 transition-all duration-200 break-all text-wrap md:flex-row md:items-center md:gap-3"
                 >
                   <p>{data.title.substring(0, 50)}</p>
                   <div>

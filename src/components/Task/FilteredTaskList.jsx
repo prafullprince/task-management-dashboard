@@ -74,7 +74,7 @@ function FilteredTaskList({ filteredTasks }) {
                     onClick={(e) => {
                       completeHandler(e, filteredTodo.id);
                     }}
-                    className={`w-6 h-6 mt-2 aspect-square border-[0.2px] rounded-sm flex justify-center items-center cursor-pointer ${
+                    className={`w-6 h-6 mt-2 aspect-square border-[0.2px] rounded-sm sm:flex hidden justify-center items-center cursor-pointer ${
                       filteredTodo.completed ? "bg-blue-50 border-blue-100" : ""
                     }`}
                   >
@@ -106,7 +106,7 @@ function FilteredTaskList({ filteredTasks }) {
                   </div>
                 </div>
                 {/* right */}
-                <div className="flex items-center gap-2">
+                <div className="flex gap-2 flex-col sm:flex-row sm:items-center sm:gap-2">
                   <button onClick={(e) => completeHandler(e, filteredTodo.id)}>
                     <IoCheckmarkDone
                       className={`text-3xl ${

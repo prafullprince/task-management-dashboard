@@ -40,7 +40,7 @@ function CategoryTab() {
       <div className="flex gap-6 lg:items-center lg:flex-row flex-col">
 
         {/* categories tab */}
-        <div className="grid sm:flex border-0 rounded-lg bg-richblack-700 py-1 px-2 w-fit mt-4 grid-cols-1">
+        <div className="grid sm:flex border-0 rounded-lg bg-richblack-700 py-1 px-2 w-fit mt-4 grid-cols-2">
           {categories.map((category, idx) => (
             <Tab
               key={idx}
