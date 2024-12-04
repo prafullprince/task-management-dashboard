@@ -6,13 +6,11 @@ import { FaCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-
 function EditModal({ editModalData, setEditModalData }) {
-
   // hook
   const dispatch = useDispatch();
-  const {task} = useSelector((state)=>state.tasks);
-  const currentTask = task.filter((todo)=> todo.id === editModalData.id);
+  const { task } = useSelector((state) => state.tasks);
+  const currentTask = task.filter((todo) => todo.id === editModalData.id);
 
   // state
   const [formData, setFormData] = useState({
@@ -33,7 +31,7 @@ function EditModal({ editModalData, setEditModalData }) {
   function dateChangeHandler(date) {
     setFormData((prev) => ({
       ...prev,
-      date: date ? date.toISOString().split('T')[0] : '', // Store date as YYYY-MM-DD
+      date: date ? date.toISOString().split("T")[0] : "", // Store date as YYYY-MM-DD
     }));
   }
 
@@ -85,45 +83,50 @@ function EditModal({ editModalData, setEditModalData }) {
 
         {/* EditTask */}
         <form onSubmit={submitHandler} className="mt-1">
-            <div className="border border-richblue-400 mt-20 rounded-md">
-              <input
-                className="bg-richblack-800 w-full outline-none px-4 py-3 text-richblack-5 text-lg"
-                required
-                type="text"
-                placeholder="title"
-                onChange={changeHandler}
-                name="title"
-                value={formData.title}
-              />
-              <input
-                className="bg-richblack-800 w-full outline-none px-4 py-3 text-richblack-50 text-sm"
-                required
-                type="text"
-                placeholder="description"
-                onChange={changeHandler}
-                name="description"
-                value={formData.description}
-              />
-              {/* datePicker */}
+          <div className="border border-richblue-400 mt-20 rounded-md">
+            <input
+              className="bg-richblack-800 w-full outline-none px-4 py-3 text-richblack-5 text-lg"
+              required
+              type="text"
+              placeholder="title"
+              onChange={changeHandler}
+              name="title"
+              value={formData.title}
+            />
+            <input
+              className="bg-richblack-800 w-full outline-none px-4 py-3 text-richblack-50 text-sm"
+              required
+              type="text"
+              placeholder="description"
+              onChange={changeHandler}
+              name="description"
+              value={formData.description}
+            />
+            {/* datePicker */}
             <div className="w-full flex items-center px-4 py-3 gap-2 cursor-pointer">
               <FaCalendarAlt />
               <DatePicker
                 className="bg-richblack-800 w-full outline-none text-richblack-5 cursor-pointer"
-                selected={formData.date && !isNaN(new Date(formData.date).getTime())  ? new Date(formData.date) : null}
+                selected={
+                  formData.date && !isNaN(new Date(formData.date).getTime())
+                    ? new Date(formData.date)
+                    : null
+                }
                 onChange={dateChangeHandler}
                 dateFormat="yyyy-MM-dd"
                 placeholderText="Select due date"
               />
             </div>
-              <div className=" w-full flex justify-end bg-richblack-800 mr-2 pb-2 pr-2 mt-2">
-                <button
-                  type="submit"
-                  className="px-2 py-1 border rounded-lg bg-yellow-50 text-richblack-900 font-medium text-lg"
-                >
-                  Edit
-                </button>
-              </div>
+            {/* button */}
+            <div className=" w-full flex justify-end bg-richblack-800 mr-2 pb-2 pr-2 mt-2">
+              <button
+                type="submit"
+                className="px-2 py-1 border rounded-lg bg-yellow-50 text-richblack-900 font-medium text-lg"
+              >
+                Edit
+              </button>
             </div>
+          </div>
         </form>
       </div>
     </div>

@@ -25,7 +25,7 @@ function CategoryTab() {
     if (filters === "Completed") {
       return todo.completed;
     } else if (filters === "Pending") {
-      return !todo.completed;
+      return !todo.completed && dueDate > today;
     } else if (filters === "Overdue") {
       return !todo.completed && dueDate < today;
     } else {
