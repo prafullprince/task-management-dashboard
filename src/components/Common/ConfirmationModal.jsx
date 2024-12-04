@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 function ConfirmationModal({ modalData, setModalData }) {
   return (
@@ -42,4 +42,4 @@ function ConfirmationModal({ modalData, setModalData }) {
   );
 }
 
-export default ConfirmationModal;
+export default memo(ConfirmationModal);

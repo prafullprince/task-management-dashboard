@@ -3,9 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 import { motion } from "framer-motion";
 import { cn } from "../lib/utils";
 import { Sidebar, SidebarBody, SidebarLink } from "../components/ui/sidebar";
-import { GoLightBulb } from "react-icons/go";
 import { FaTasks } from "react-icons/fa";
-import { TbListDetails } from "react-icons/tb";
 import userImage from "../assets/mine4.jpg"
 
 
@@ -17,16 +15,10 @@ export default function Dashboard() {
   // sidebarLinks
   const links = [
     {
-      id: 2,
+      id: 1,
       label: "Tasks",
       href: "/tasks",
       icon: <FaTasks className=" text-2xl" />,
-    },
-    {
-      id: 3,
-      label: "My Day",
-      href: "/todayTasks",
-      icon: <TbListDetails className=" text-2xl" />,
     },
   ];
 

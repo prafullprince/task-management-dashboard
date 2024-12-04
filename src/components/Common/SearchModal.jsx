@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
 import ViewModal from "./ViewModal";
 
 function SearchModal({ searchModal, setSearchModal }) {
-  // hook
-  const navigate = useNavigate();
 
   // state
   const [search, setSearch] = useState("");
@@ -98,4 +95,4 @@ function SearchModal({ searchModal, setSearchModal }) {
   );
 }
 
-export default SearchModal;
+export default memo(SearchModal);

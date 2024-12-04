@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { memo, useRef, useState } from "react";
 import { MdOutlineCreateNewFolder } from "react-icons/md";
 import { CiCircleRemove } from "react-icons/ci";
 import { useDispatch } from "react-redux";

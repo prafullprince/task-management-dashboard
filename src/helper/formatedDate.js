@@ -5,6 +5,10 @@ export const formatedDueDate = (selectedDate)=>{
     const now = new Date();
     const dueDate = new Date(selectedDate);
 
+    // make time portion equal to 0(hours,minutes,seconds,milliseconds)
+    now.setHours(0,0,0,0);
+    dueDate.setHours(0,0,0,0);
+
     // difference
     const timeDiffInSec = dueDate - now;
     const timeDiffInDay = Math.floor(timeDiffInSec / (1000*60*60*24));
